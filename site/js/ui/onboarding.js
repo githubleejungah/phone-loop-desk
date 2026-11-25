@@ -179,7 +179,7 @@ function renderStep3(st, knobs) {
   return `<h3>24개월이 끝나면 (3가지 중 선택)</h3>
     <ul class="options" data-end-options>
       <li><strong>반납</strong> 추가 비용 없이 폰을 돌려줍니다. 요금제는 일반 요금제로 계속 쓸 수 있습니다.</li>
-      <li><strong>교체</strong> 반납하고 새 리퍼폰으로 24개월 구독을 다시 시작합니다.</li>
+      <li data-swap><strong>교체</strong> 반납하고 새 리퍼폰으로 24개월 구독을 다시 시작합니다. <span data-swap-pick>기종 · 등급을 다시 고를 수 있습니다(상위 기종도 가능).</span> <span data-swap-fee>월 기기료는 새 폰 기준으로 다시 정합니다.</span></li>
       <li><strong>인수</strong> 남은 값 <span data-buyout>${won(residualValue(cost, knobs))}원</span>을 한 번 내고 폰을 가집니다.</li>
     </ul>
     <h3>중간에 그만두면</h3>

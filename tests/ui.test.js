@@ -139,11 +139,18 @@ test('ac31 잘못된 요금은 받지 않고 바로 전 값 유지', () => {
 
 test('ac32 · ac33 · ac34 · ac35 미리 보기', () => {
   const html = renderOnboarding(toStep(3), K);
-  assert.equal(count(html.split('data-end-options')[1].split('</ul>')[0], /<li>/g), 3);
+  assert.equal(count(html.split('data-end-options')[1].split('</ul>')[0], /<li[ >]/g), 3);
   assert.match(html, /data-buyout>120,000원/);
   assert.match(html, /22,800원/);
   assert.equal(count(html, /data-guide="cancel-return"/g), 1);
   assert.ok(!/<details/.test(html));
+});
+
+test('ac45 교체 때 기종 · 등급 다시 고르기와 새 폰 기준 기기료 2가지', () => {
+  const html = renderOnboarding(toStep(3), K);
+  const swap = html.split('data-swap>')[1].split('</li>')[0];
+  assert.match(swap, /data-swap-pick>기종 · 등급을 다시 고를 수 있습니다/);
+  assert.match(swap, /data-swap-fee>월 기기료는 새 폰 기준/);
 });
 
 test('ac36 이름 · 전화 · 주소 입력칸 0개', () => {
